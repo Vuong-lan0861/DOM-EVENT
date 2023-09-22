@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bai3.css">
+</head>
+
+<body>
+    <!--  3. tạo giao diện gồm ô input và nút button (save)
+        khi người dùng nhập nội dung vào ô input nhấn (save) sẽ lưu vào 1 cái mảng -->
+    <div class="input-container">
+        <input type="text" id="textInput" placeholder="Nhập nội dung">
+        <button id="saveButton">Save</button>
+    </div>
+    <ul id="itemList"></ul>
+    <script>
+        let textInput = document.getElementById('textInput');
+        let saveButton = document.getElementById('saveButton');
+        let itemList = document.getElementById('itemList');
+        let items = [];
+
+        saveButton.addEventListener('click', function () {
+            let inputValue = textInput.value.trim();
+            if (inputValue !== '') {
+                items.push(inputValue);
+                textInput.value = ''; // Clear the input
+                displayItems();
+            }
+        });
+
+        function displayItems() {
+            itemList.innerHTML = ''; // Clear the list
+            items.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${item}`;
+                itemList.appendChild(li);
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
